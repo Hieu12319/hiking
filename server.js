@@ -14,11 +14,7 @@ app.use(methodOverride('_method'));
 app.use(morgan("dev"));
 app.use("/", hikesController);
 
-mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,  
-});
-
+mongoose.connect(process.env.DATABASE_URL)
 const db = mongoose.connection;
 db.on('error', (err) => console.log(err.message + " is mongo not running?"));
 db.on('connected', ()=> console.log('mongoose connected'));
@@ -30,4 +26,4 @@ db.on('disconnected', () => console.log("mongo disconnected"));
 const PORT = process.env.PORT
 app.listen(PORT, ()=>{
     console.log(`listening on port ${PORT}`)
-})
+        })

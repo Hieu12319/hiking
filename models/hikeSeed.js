@@ -1,10 +1,10 @@
 module.exports = [
     {
         name: "Los Peñasquitos Canyon Preserve",
-        Distance:"7 miles",
-        Comments: "nice easy hike",
+        distance:"7 miles",
+        comments: "nice easy hike",
         img: "https://www.sandiego.gov/sites/default/files/legacy/park-and-recreation/graphics/waterfall.jpg",
-        Completed: true,
+        completed: true,
     },
     {
          name: "Torrey Pines Beach Trail",

@@ -1,11 +1,12 @@
 const mongoose = require("mongoose")
-const Schema = mongoose.Schema;
+const { Schema, model } = mongoose
+
 
 const hikeSchema = new Schema({
   name: { type: String, required: true },
-  distance: { type: String, required: false },
-  comments: { type: String, required: false },
-  img : { type: String, required: false},
+  distance: { type: String, },
+  comments: { type: String, },
+  img : { type: String, },
   completed:  Boolean,
 })
 

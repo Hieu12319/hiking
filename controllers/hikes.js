@@ -41,17 +41,20 @@ hikeRouter.delete("/hikes/:id", (req, res) => {
 });
 //update
 hikeRouter.put('/hikes/:id', (req, res) => {
-    console.log(req.body)
-    req.body.completed = !!req.body.completed;
-    Hike.findByIdAndUpdate(req.params.id, req.body,(err, updatedHike) => {
-        if (err) console.log(err)
-        res.redirect(`${req.params.id}`);
-    });
-});
+    Hike.findByIdAndUpdate(
+        req.params.id,
+       
+        req.body,(err, updatedHike)=>{
+            
+            if(err) {
+                console.log(err);}
+        res.redirect(`/hikes`)
+    })})
+
 // Create
  hikeRouter.post('/hikes', (req, res) => {
-     console.log(req.body.completed)
-     req.body.completed == !!req.body.completed;
+     console.log(req.body)
+     req.body.completed = !!req.body.completed;
      Hike.create(req.body, (err, createdHike) => {
          if (err) {
            console.log(err);
@@ -77,8 +80,8 @@ hikeRouter.put('/hikes/:id', (req, res) => {
 // edit
 
 hikeRouter.get('/hikes/:id/edit', (req, res) => {
-   Hike.findById(req.params.id, (err, Hike) => {
-        res.render('edit.ejs', {Hike,
+   Hike.findById(req.params.id, (err, hike) => {
+        res.render('edit.ejs', {hike: req.params.id,
         index: req.params.id});
     });
 });
@@ -88,8 +91,9 @@ hikeRouter.get('/hikes/:id/edit', (req, res) => {
 //show
 hikeRouter.get('/hikes/:id', (req, res) => {
     Hike.findById(req.params.id, (err, foundHike) => {
-        res.render('show.ejs', {hike: Hike,
-        index: req.body});
+        console.log(foundHike.distance)
+        res.render('show.ejs', {hike: foundHike,
+        index: req.params.id});
     });
 });
 

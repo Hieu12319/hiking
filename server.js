@@ -12,6 +12,7 @@ const hikesController = require('./controllers/hikes.js')
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(morgan("dev"));
+
 app.use("/", hikesController);
 
 mongoose.connect(process.env.DATABASE_URL)
@@ -20,7 +21,10 @@ db.on('error', (err) => console.log(err.message + " is mongo not running?"));
 db.on('connected', ()=> console.log('mongoose connected'));
 db.on('disconnected', () => console.log("mongo disconnected"));
 
-
+app.get("/", (req, res)=> {
+    console.log('hello')
+    res.redirect('/hikes')
+})
 
 // listener
 const PORT = process.env.PORT

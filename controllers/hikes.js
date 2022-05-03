@@ -4,11 +4,12 @@ const Hike = require('../models/hike');
  const hikeSeed = require("../models/hikeSeed");
 
 
-//exports
-module.exports = hikeRouter;
+
 
 
 // routes index new delete update edit  show
+
+
 //index
 hikeRouter.get('/hikes', (req, res) => {
     Hike.find({}, (err, allHikes) => {
@@ -98,3 +99,5 @@ hikeRouter.get('/hikes/:id', (req, res) => {
 });
 
 
+//exports
+module.exports = hikeRouter;
